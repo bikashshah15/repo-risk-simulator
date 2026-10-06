@@ -1,0 +1,4 @@
+interface:
+  display_name: "Repository Risk Simulator"
+  short_description: "GitHub SBOM, OSV findings, and offline simulations"
+  default_prompt: "Use $repo-risk-simulator to analyze a GitHub repository and create up to three evidence-linked scenarios in an offline HTML report."

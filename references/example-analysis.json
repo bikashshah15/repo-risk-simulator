@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "selection_notes": "Three synthetic scenarios demonstrate prerequisite controls, evidence inspection, and modeled mitigations.",
+  "limitations": [
+    "Synthetic data only. No live security conclusions can be drawn."
+  ],
+  "assessments": [
+    {
+      "finding_id": "F-DEMO-1",
+      "status": "unknown",
+      "rationale": "Synthetic source illustrates a call; exposure and deployment are unknown.",
+      "evidence_ids": [
+        "PKG-P0001",
+        "ADV-SIM-ADVISORY-1",
+        "SRC-DEMO-1"
+      ],
+      "limitations": [
+        "Invented demonstration, not a real vulnerability assessment."
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "S1",
+      "finding_id": "F-DEMO-1",
+      "title": "Parser input boundary",
+      "evidence_ids": [
+        "PKG-P0001",
+        "ADV-SIM-ADVISORY-1",
+        "SRC-DEMO-1"
+      ],
+      "facts": [
+        {
+          "text": "The synthetic inventory lists training-parser at 1.0.0.",
+          "evidence_ids": [
+            "PKG-P0001"
+          ]
+        },
+        {
+          "text": "The illustrative source contains a conceptual dependency call.",
+          "evidence_ids": [
+            "SRC-DEMO-1"
+          ]
+        }
+      ],
+      "assumptions": [
+        "Assume the advisory-described operation is used in a deployed application."
+      ],
+      "unknowns": [
+        "Deployment exposure and the mitigation state are unknown."
+      ],
+      "application_evidence_gap": "Synthetic source is illustrative. There is no deployed application or runtime evidence.",
+      "prerequisites": [
+        {
+          "id": "affected",
+          "label": "Affected package condition present",
+          "required_value": true,
+          "initial": "true",
+          "basis": "observed",
+          "explanation": "Observed only inside the invented teaching fixture.",
+          "evidence_ids": [
+            "PKG-P0001",
+            "ADV-SIM-ADVISORY-1"
+          ]
+        },
+        {
+          "id": "reachable",
+          "label": "External input reaches affected functionality",
+          "required_value": true,
+          "initial": "unknown",
+          "basis": "assumption",
+          "explanation": "Set a what-if assumption about input reachability.",
+          "evidence_ids": [
+            "SRC-DEMO-1"
+          ]
+        },
+        {
+          "id": "mitigated",
+          "label": "Documented mitigation enabled",
+          "required_value": false,
+          "initial": "unknown",
+          "basis": "assumption",
+          "explanation": "Assume the fixture mitigation blocks this particular modeled path.",
+          "evidence_ids": [
+            "ADV-SIM-ADVISORY-1"
+          ]
+        }
+      ],
+      "steps": [
+        {
+          "text": "Hypothetically, external input reaches the application entry point.",
+          "evidence_ids": []
+        },
+        {
+          "text": "The application invokes the advisory-described operation if the stated conditions hold.",
+          "evidence_ids": [
+            "SRC-DEMO-1",
+            "ADV-SIM-ADVISORY-1"
+          ]
+        },
+        {
+          "text": "An enabled mitigation interrupts this modeled path; otherwise the hypothetical impact may follow.",
+          "evidence_ids": [
+            "ADV-SIM-ADVISORY-1"
+          ]
+        }
+      ],
+      "hypothetical_impact": "The modeled parser operation could consume excessive resources.",
+      "limitations": [
+        "All input is synthetic; no exploit was attempted or validated.",
+        "The model covers only these explicit prerequisites."
+      ]
+    }
+  ]
+}
